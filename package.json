@@ -1,0 +1,70 @@
+{
+  "name": "MMFENDCapstoneTravelApp",
+  "version": "1.0.0",
+  "description": "Udacity FEND Travel app Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "webpack-dev-server --config webpack.dev.js --open",
+    "start": "node src/server/server.js",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MonkeyMomma"
+  },
+  "author": "Karin Davis",
+  "license": "M",
+  "bugs": {
+    "url": "https://github.com/MonkeyMomma"
+  },
+  "homepage": "https://www.monkeymommacreations.com",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.6",
+    "body-parser": "^1.19.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "cors": "^2.8.5",
+    "css-loader": "^3.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.3.1",
+    "file-loader": "^5.0.2",
+    "fontello-cli": "^0.5.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.0",
+    "picnic": "^6.5.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "sass": "^1.24.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.1.2",
+    "webpack": "^4.43.0",
+    "workbox-webpack-plugin": "^4.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "babel-jest": "^24.9.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^24.9.0",
+    "jest-cli": "^24.9.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.10.1"
+  },
+  "keywords": [
+    "travel",
+    "journal",
+    "udacity",
+    "student",
+    "fend"
+  ]
+}
