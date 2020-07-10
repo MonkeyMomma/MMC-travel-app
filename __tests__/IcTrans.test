@@ -1,4 +1,4 @@
-import * as t from '../src/client/js/translateIcon';
+import * as t from '../src/client/js/IcTrans';
 
 describe('Frontend Test', () => {
     test('Get icon class for clear-day', () => {
@@ -11,4 +11,3 @@ describe('Frontend Test', () => {
         expect(t.getIconClass('unknown-weather')).toBe('icon-sun');
     });
 });
- 

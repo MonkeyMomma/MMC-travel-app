@@ -111,15 +111,15 @@ async function processTravelData(req, res) {
             if (geonamesData.postalCodes[0] == undefined) {
                 req.body.error = "Location of destination not found, try again with different destination/country, if entering attraction, try closest city name. i.e. Anaheim instead of Disneyland.";
             } else {
-                lng = geonamesData.postalCodes[0].lng;
-                lat = geonamesData.postalCodes[0].lat;
+                longitude = geonamesData.postalCodes[0].lng;
+                latitude = geonamesData.postalCodes[0].lat;
                 geonamesSuccess = true;
             }
         }
     });
 
     // get weather data from WEATHERBIT API
-    let weatherbitURL = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lng}&key=${process.env.WEATHERBIT_API_KEY}&units=I`
+    let weatherbitURL = 'https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&key=${process.env.WEATHERBIT_API_KEY}&units=I'
 
     if (geonamesSuccess) {
         console.log("::: Now get the Weather Data :::", weatherbitURL);
