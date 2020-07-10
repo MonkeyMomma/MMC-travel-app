@@ -1,13 +1,17 @@
-function handleSubmit(event) {
+function handleForm(event) {
     event.preventDefault()
 
     // Validate entry information
-    let formDestination = document.getElementById('destination').value
-    let formDateFrom = document.getElementById('datefrom').value
-    let formCountry = document.getElementById('country').value
+    let formStreetNumber = document.getElementById('streetnumber').value;
+    let formStreetName = document.getElementById('streetname').value;
+    let formStreetType = document.getElementById('streettype').value;
+    let formCity = document.getElementById('city').value;
+    let formDateFrom = document.getElementById('datefrom').value;
 
-    console.log("::: destination :::", formDestination);
-    console.log("::: country :::", formCountry);
+    console.log("::: streetnumber :::", formStreetNumber);
+    console.log("::: streetname :::", formStreetName);
+    console.log("::: streettype :::", formStreetType);
+    console.log("::: city :::", formCity);
     console.log("::: datefrom :::", formDateFrom);
 
     // async function to post form data to backend
@@ -23,8 +27,10 @@ function handleSubmit(event) {
       }
 
       // Verify information for validity, if successful go ahead
-      postFormData('http://localhost:8001/travel', {destination: formDestination,
-                                                    country: formCountry,
+      postFormData('http://localhost:8001/travel', {streetnumber: formStreetNumber,
+                                                    streetname: formStreetName,
+                                                    streettype: formStreetType,
+                                                    city: formCity,
                                                     datefrom: formDateFrom})
       .then((data) => {
         console.log('DATA')
@@ -45,7 +51,7 @@ function handleSubmit(event) {
             document.getElementById('error').innerHTML = "";
             document.getElementById('daysleft').innerHTML = data.daysleft;
 
-            // weather summary
+            // weather summary and images from APIs
             document.getElementById('weathersummary').innerHTML = data.summary;
             document.getElementById('weathersummary').className = '';
             document.getElementById('weathersummary').classList.add(Client.getIconClass(data.icon));
@@ -63,4 +69,4 @@ function handleSubmit(event) {
     }
 }
 
-export { handleSubmit }
+export { handleForm }

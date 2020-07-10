@@ -37,9 +37,11 @@ function listening() {
 
 // Post Route- Validation of data from travel form input
 app.post('/travel', [
-    check('destination').not().isEmpty(),
+    check('streetnumber').not().isEmpty(),
+    check('streetname').not().isEmpty(),
+    check('streettype').not().isEmpty(),
+    check('city').not().isEmpty(),
     check('datefrom').not().isEmpty(),
-    check('country').not().isEmpty()
 ], (req, res) => {
 
     const errors = validationResult(req)
@@ -58,16 +60,28 @@ app.post('/travel', [
             }
 
             switch (obj.param) {
-                case 'destination':
-                    req.body.error += 'Need Valid Destination City';
+                case 'streetnumber':
+                    req.body.error += 'Need Valid Address Information for Destination';
+                    break;
+                case 'streetname':
+                    req.body.error += 'Need Valid Address Information for Destination';
+                    break;
+                case 'streetnumber':
+                    req.body.error += 'Need Valid Address Information for Destination';
+                    break;
+                case 'streettype':
+                    req.body.error += 'Need Valid Address Information for Destination';
+                    break;
+                case 'streetnumber':
+                    req.body.error += 'Need Valid Address Information for Destination';
+                    break;
+                case 'city':
+                    req.body.error += 'Need Valid City for Destination';
                     break;
                 case 'datefrom':
                     req.body.error += 'When are you leaving';
                     break;
-                case 'country':
-                    req.body.error += 'Country is Missing';
-                    break;
-            }
+                  }
 
         });
 
@@ -101,7 +115,7 @@ async function processTravelData(req, res) {
 
     // get location from Geonames API and fetch first entry
     // Username in process.env.GEONAMES_USERNAME
-    let geonamesURL = 'http://api.geonames.org/postalCodeSearchJSON?placename_startsWith=' + req.body.destination + '&countryCode=' + req.body.country + '&maxRows=1&username=' + process.env.GEONAMES_USERNAME
+    let geonamesURL = 'http://api.geonames.org/geoCodeAddress?q=' + req.body.streetnumber + "+" + req.body.streetname + "+" + req.body.streettype + "+" + req.body.city + "&username=" + process.env.GEONAMES_USERNAME
 
     await request(geonamesURL, function (err, response, body) {
         if (err) {
@@ -109,8 +123,9 @@ async function processTravelData(req, res) {
         } else {
             let geonamesData = JSON.parse(body);
             if (geonamesData.postalCodes[0] == undefined) {
-                req.body.error = "Location of destination not found, try again with different destination/country, if entering attraction, try closest city name. i.e. Anaheim instead of Disneyland.";
-            } else {
+                req.body.error = "Geo Coordinates of Destination Address not found";
+            }
+            else {
                 longitude = geonamesData.postalCodes[0].lng;
                 latitude = geonamesData.postalCodes[0].lat;
                 geonamesSuccess = true;
@@ -166,12 +181,10 @@ async function processTravelData(req, res) {
     }
 
     let travelData = {
-        destination: req.body.destination,
-        country: req.body.country,
+        city: req.body.city,
         datefrom: req.body.datefrom,
-        daysleft: "Adventure in " + req.body.destination + " starts in " + countDownDays + " days from today!",
+        daysleft: "Adventure in " + req.city + " starts in " + countDownDays + " days from today!",
         summary: weatherSummary,
-        icon: weatherIcon,
         imagelink: imageLink,
         status: req.body.status,
         error: req.body.error
