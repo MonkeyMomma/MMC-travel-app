@@ -1,5 +1,7 @@
 # MMFENDTravelApp
- Udacity Front End Developer Nanodegree Travel App Project: Capstone
+ This is the Udacity Front End Developer Nanodegree Travel App Capstone Project. 
+ 
+I do not recommend Udacity's Programs, however. Their "reviewers" are sexist and have repeatedly accused me of plagerism for submitting my own work. Even if there is only simularities caused by using industry recommended coding styles and layouts, they will accuse of plagerism, especially if you are female. Because of this, I was not able to complete my Nanodegree. I do not recommend giving Udacity any of your hard earned money.
 
 
 ## Overview
